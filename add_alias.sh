@@ -9,7 +9,11 @@ if [ "$#" -ne 1 ]; then
 fi
 
 if ! alias $1 2>/dev/null ; then
-	printf "\nalias $1=\"python3 ${filepath}\"" >> ~/.bashrc
+	if [ -f ~/.bash_aliases ]; then
+		printf "\nalias $1=\"python3 ${filepath}\"" >> ~/.bash_aliases
+	else
+		printf "\nalias $1=\"python3 ${filepath}\"" >> ~/.bashrc
+	fi
 else
 	printf "Alias \"$1\" already exists. Please try using another alias.\n"
 fi

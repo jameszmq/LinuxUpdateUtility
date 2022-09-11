@@ -61,6 +61,8 @@ def prompt():
 		if option[2]:
 			option[3]()
 			option[2] = False
+	prompt = "Done Updating"
+	print(prompt.center(os.get_terminal_size().columns, '-'))
 
 option_list = [
 	["1", "pip", 		False, pip_update],

@@ -25,14 +25,14 @@ def pip_update():
 	fp = open("a.txt", "r")
 	lines = fp.readlines()
 	if len(lines) > 2:
-		del lines[0]
-		del lines[0]
+		lines.pop(0)
+		lines.pop(0)
 		result = ""
 		for line in lines:
 			if line != "":
-				result += line.split()[0]
-				result += " "
-		os.system("python3 -m pip install --upgrade " + result)
+				command = "python3 -m pip install --upgrade " + line.split()[0]
+				print(command)
+				os.system(command)
 	else:
 		print("Nothing to update.")
 	fp.close()
